@@ -4,5 +4,8 @@
     <%= @manufacturer.name %>
 </h2>
 
-<%= link_to 'Editar', edit_manufacturer_path(@manufacturer), class:"btn btn btn-warning etc-pdn-show" %>
-<%= link_to 'Voltar', manufacturers_path, class:"btn btn-outline-dark etc-pdn-show" %>
+<div class="col-sm-5 etc-pdn-top">
+    <%= link_to 'Editar', edit_manufacturer_path(@manufacturer), class:"btn btn btn-warning" %>
+    <%= link_to 'Apagar', manufacturer_path(@manufacturer), method: :delete, class: "btn btn-danger", data: { confirm: 'Quer apagar este fabricante?' } %>
+    <%= link_to 'Voltar', manufacturers_path, class:"btn btn-outline-dark" %>
+</div>
