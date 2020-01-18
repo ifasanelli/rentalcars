@@ -10,19 +10,34 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <% if user_signed_in? %>
-          <li><span>Olá, <%= current_user.email %></span></li>
-          <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to 'Entrar', new_user_session_path %></li>
-        <% end %>
-      </ul>
+  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="<% root_url %>">Rental Cars</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <a class="nav-link"><span>Olá, <%= current_user.email %></span><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'nav-link' %><span class="sr-only">(current)</span>
+            </li>
+          <% else %>
+            <li class="nav-item active">
+              <%= link_to 'Entrar', new_user_session_path, class: 'nav-link' %><span class="sr-only">(current)</span>
+            </li>
+          <% end %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      </div>
     </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice etc-pdn"><%= notice %></p>
+    <p class="alert etc-pdn"><%= alert %></p>
 
     <%= yield %>
   </body>

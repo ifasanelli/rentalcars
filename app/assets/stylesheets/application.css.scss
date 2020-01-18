@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+ h1, h2 {
+    margin-left: 50px;
+    margin-top: 0px;
+ }
+
+ form {
+    margin-left: 50px;
+ }
+
+ .etc-pdn {
+   margin-left: 50px;
+   margin-top: 10px;
+ }
