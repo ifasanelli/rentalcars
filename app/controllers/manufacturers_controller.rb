@@ -11,9 +11,19 @@ class ManufacturersController < ApplicationController
         @manufacturer = Manufacturer.new
     end
 
+    def edit
+        @manufacturer = Manufacturer.find(params[:id])
+    end
+
     def create
         @manufacturer = Manufacturer.new(manufacturer_params)
         @manufacturer.save
+        redirect_to @manufacturer
+    end
+
+    def update
+        @manufacturer = Manufacturer.find(params[:id])
+        @manufacturer.update(manufacturer_params)
         redirect_to @manufacturer
     end
 
