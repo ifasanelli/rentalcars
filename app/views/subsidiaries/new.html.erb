@@ -20,4 +20,14 @@
   </div>
 <% end %>
 
+<div class="col-sm-10">
+    <% if @subsidiary.errors.any?%>
+        <p>Você deve corrigir os erros para continuar:</p>
+        
+        <% @subsidiary.errors.full_messages.each do |message|  %>
+            <p><%= message %></p>
+        <% end %>
+    <% end %>
+</div>
+
 <%= link_to 'Voltar', subsidiaries_path, class:"btn btn-outline-dark etc-pdn-horz" %>
