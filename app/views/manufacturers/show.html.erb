@@ -1,8 +1,18 @@
-<h1>Fabricante</h1>
+<h2 class="etc-pdn-vert">Fabricante</h2>
 
-<h2>
-    <%= @manufacturer.name %>
-</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @manufacturer.name %></td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="col-sm-5 etc-pdn-top">
     <%= link_to 'Editar', edit_manufacturer_path(@manufacturer), class:"btn btn btn-warning" %>

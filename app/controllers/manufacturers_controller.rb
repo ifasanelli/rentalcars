@@ -17,14 +17,20 @@ class ManufacturersController < ApplicationController
 
     def create
         @manufacturer = Manufacturer.new(manufacturer_params)
-        @manufacturer.save
-        redirect_to @manufacturer
+        if @manufacturer.save
+            redirect_to @manufacturer
+        else
+            render :new
+        end
     end
 
     def update
         @manufacturer = Manufacturer.find(params[:id])
-        @manufacturer.update(manufacturer_params)
-        redirect_to @manufacturer
+        if @manufacturer.update(manufacturer_params)
+            redirect_to @manufacturer
+        else
+            render :edit
+        end
     end
 
     def destroy

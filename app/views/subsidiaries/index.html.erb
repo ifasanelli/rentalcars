@@ -1,0 +1,26 @@
+<h2 class="etc-pdn-vert">Filiais</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">CNPJ</th>
+      <th scope="col">Endereço</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subsidiaries.each do |subsidiary|  %>
+        <tr>
+            <td><%= link_to subsidiary.name, subsidiary_path(subsidiary.id), class:"text-dark" %></td>
+            <td><%= subsidiary.cnpj %></td>
+            <td> <%= subsidiary.address %> </td>
+            <td></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Voltar', root_path, class:"btn btn-outline-dark etc-pdn-horz" %>
