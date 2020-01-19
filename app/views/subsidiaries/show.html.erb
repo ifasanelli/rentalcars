@@ -18,9 +18,7 @@
 </table>
 
 <div class="col-sm-5 etc-pdn-top">
-<<<<<<< HEAD
     <%= link_to 'Editar', edit_subsidiary_path(@subsidiary), class:"btn btn btn-warning" %>
-=======
->>>>>>> eb14f84cee60ed83edce76d6dbd424c9ae92227d
+    <%= link_to 'Apagar', subsidiary_path(@subsidiary), method: :delete, class: "btn btn-danger", data: { confirm: 'Quer apagar esta filial?' } %>
     <%= link_to 'Voltar', subsidiaries_path, class:"btn btn-outline-dark" %>
 </div>
