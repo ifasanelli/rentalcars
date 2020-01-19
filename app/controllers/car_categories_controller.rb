@@ -17,14 +17,20 @@ class CarCategoriesController < ApplicationController
 
     def create
         @car_category = CarCategory.new(car_category_params)
-        @car_category.save
-        redirect_to @car_category
+        if @car_category.save
+            redirect_to @car_category
+        else   
+            render :new
+        end
     end
 
     def update
         @car_category = CarCategory.find(params[:id])
-        @car_category.update(car_category_params)
-        redirect_to @car_category
+        if @car_category.update(car_category_params)
+            redirect_to @car_category
+        else  
+            render :edit
+        end
     end
 
     def destroy
