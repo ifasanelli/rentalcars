@@ -23,5 +23,6 @@
 
 <div class="col-sm-5 etc-pdn-top">
     <%= link_to 'Editar', edit_car_category_path(@car_category), class:"btn btn-warning" %>
+    <%= link_to 'Deletar', car_category_path(@car_category), method: :delete, class: "btn btn-danger", data: { confirm: 'Quer apagar esta categoria?' } %>
     <%= link_to 'Voltar', car_categories_path, class:"btn btn-outline-dark" %>
 </div>
