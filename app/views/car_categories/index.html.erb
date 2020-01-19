@@ -1,0 +1,26 @@
+<h2 class="etc-pdn-vert">Categorias</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Diária</th>
+      <th scope="col">Seguro</th>
+      <th scope="col">Seguro para terceiros</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @car_categories.each do |car_category|  %>
+        <tr>
+            <td><%= link_to car_category.name, car_category_path(car_category.id), class:"text-dark" %></td>
+            <td><%= car_category.daily_rate %></td>
+            <td><%= car_category.car_insurance %></td>
+            <td><%= car_category.third_party_insurance %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Voltar', root_path, class:"btn btn-outline-dark etc-pdn-horz" %>

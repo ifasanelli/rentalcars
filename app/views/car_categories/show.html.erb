@@ -1,0 +1,25 @@
+<h2 class="etc-pdn-vert">Categoria</h2>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Diária</th>
+      <th scope="col">Seguro</th>
+      <th scope="col">Seguro para terceiros</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @car_category.name %></td>
+      <td><%= @car_category.daily_rate %></td>
+      <td><%= @car_category.car_insurance %></td>
+      <td><%= @car_category.third_party_insurance %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="col-sm-5 etc-pdn-top">
+    <%= link_to 'Voltar', car_categories_path, class:"btn btn-outline-dark" %>
+</div>
