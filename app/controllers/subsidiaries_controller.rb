@@ -11,22 +11,28 @@ class SubsidiariesController < ApplicationController
         @subsidiary = Subsidiary.new
     end
 
+<<<<<<< HEAD
     def edit
         @subsidiary = Subsidiary.find(params[:id])
     end
 
+=======
+>>>>>>> eb14f84cee60ed83edce76d6dbd424c9ae92227d
     def create
         @subsidiary = Subsidiary.new(subsidiary_params)
         @subsidiary.save
         redirect_to @subsidiary
     end
 
+<<<<<<< HEAD
     def update
         @subsidiary = Subsidiary.find(params[:id])
         @subsidiary.update(subsidiary_params)
         redirect_to @subsidiary
     end
 
+=======
+>>>>>>> eb14f84cee60ed83edce76d6dbd424c9ae92227d
     private
 
     def subsidiary_params
