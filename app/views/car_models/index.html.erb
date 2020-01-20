@@ -1,0 +1,30 @@
+<h2 class="etc-pdn-vert">Modelos</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Motorização</th>
+      <th scope="col">Ano</th>
+      <th scope="col">Tipo combustível</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Fabricante</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @car_models.each do |car_model|  %>
+        <tr>
+            <td><%= link_to car_model.name, car_model_path(car_model.id), class:"text-dark" %></td>
+            <td><%= car_model.motorization %></td>
+            <td><%= car_model.year %></td>
+            <td><%= car_model.fuel_type %></td>
+            <td><%= car_model.car_category.name %></td>
+            <td><%= car_model.manufacturer.name %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Voltar', root_path, class:"btn btn-outline-dark etc-pdn-horz" %>
