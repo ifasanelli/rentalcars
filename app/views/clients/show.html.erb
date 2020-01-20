@@ -1,6 +1,7 @@
 <h2 class="etc-pdn-vert">Cliente</h2>
 
 
+
 <table class="table">
   <thead>
     <tr>
@@ -19,5 +20,6 @@
 </table>
 
 <div class="col-sm-5 etc-pdn-top">
+    <%= link_to 'Editar', edit_client_path(@client), class:"btn btn-warning" %>
     <%= link_to 'Voltar', clients_path, class:"btn btn-outline-dark" %>
 </div>

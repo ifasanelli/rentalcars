@@ -1,0 +1,26 @@
+<h2>Editar cliente</h2>
+
+<%= form_for @client do |f| %>
+  <div class="form-group row">
+    <%= f.label :name, 'Nome', class:"col-sm-1" %>
+    <%= f.text_field :name, class:"form-control col-sm-10" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :email, 'Email', class:"col-sm-1" %>
+    <%= f.text_field :email, class:"form-control col-sm-10" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :cpf, 'CPF', class:"col-sm-1" %>
+    <%= f.text_field :cpf, class:"form-control col-sm-10" %>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-5">
+        <%= f.submit 'Salvar', class: "btn btn-dark" %>
+    </div>
+  </div>
+<% end %>
+
+
+<%= link_to 'Voltar', clients_path, class:"btn btn-outline-dark etc-pdn-horz" %>
+
+
