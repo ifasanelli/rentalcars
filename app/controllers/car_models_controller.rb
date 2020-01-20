@@ -13,11 +13,25 @@ class CarModelsController < ApplicationController
         @car_model = CarModel.new
     end
 
+    def edit
+        @car_categories = CarCategory.all 
+        @manufacturers = Manufacturer.all
+        @car_model = CarModel.find(params[:id])
+    end 
+
     def create
         @car_categories = CarCategory.all 
         @manufacturers = Manufacturer.all
         @car_model = CarModel.new(car_model_params)
         @car_model.save
+        redirect_to @car_model
+    end
+
+    def update
+        @car_categories = CarCategory.all 
+        @manufacturers = Manufacturer.all
+        @car_model = CarModel.find(params[:id])
+        @car_model.update(car_model_params)
         redirect_to @car_model
     end
 

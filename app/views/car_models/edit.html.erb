@@ -1,0 +1,35 @@
+<h2>Editar modelo</h2>
+
+<%= form_for @car_model do |f| %>
+  <div class="form-group row">
+    <%= f.label :name, 'Nome', class:"col-sm-2" %>
+    <%= f.text_field :name, class:"form-control col-sm-8" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :motorization, 'Motorização', class:"col-sm-2" %>
+    <%= f.text_field :motorization, class:"form-control col-sm-8" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :year, 'Ano', class:"col-sm-2" %>
+    <%= f.text_field :year, class:"form-control col-sm-8" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :fuel_type, 'Tipo combustível', class:"col-sm-2" %>
+    <%= f.text_field :fuel_type, class:"form-control col-sm-8" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :car_category_id, 'Categoria', class:"my-1 mr-2" %>
+    <%= f.collection_select(:car_category_id, @car_categories, :id, :name, class:"custom-select my-1 mr-sm-2") %>
+  </div>
+  <div class="form-group row">  
+    <%= f.label :manufacturer_id, 'Fabricante', class:"my-1 mr-2" %>
+    <%= f.collection_select(:manufacturer_id, @manufacturers, :id, :name, class:"custom-select my-1 mr-sm-2") %>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-5">
+        <%= f.submit 'Salvar', class: "btn btn-dark" %>
+    </div>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', car_models_path, class:"btn btn-outline-dark etc-pdn-horz" %>
