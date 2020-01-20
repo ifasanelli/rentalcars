@@ -21,5 +21,6 @@
 
 <div class="col-sm-5 etc-pdn-top">
     <%= link_to 'Editar', edit_client_path(@client), class:"btn btn-warning" %>
+    <%= link_to 'Deletar', client_path(@client), method: :delete, class: "btn btn-danger", data: { confirm: 'Quer apagar este cliente?' } %>
     <%= link_to 'Voltar', clients_path, class:"btn btn-outline-dark" %>
 </div>
