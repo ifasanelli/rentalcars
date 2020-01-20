@@ -25,6 +25,7 @@
 </table>
 
 <div class="col-sm-5 etc-pdn-top">
-    <%= link_to 'Editar', edit_car_model_path(@car_model), class:"btn btn-warning"  %>
+    <%= link_to 'Editar', edit_car_model_path(@car_model), class:"btn btn-warning" %>
+    <%= link_to 'Deletar', car_model_path(@car_model), method: :delete, class: "btn btn-danger", data: { confirm: 'Quer apagar este modelo?' } %>
     <%= link_to 'Voltar', car_models_path, class:"btn btn-outline-dark" %>
 </div>
