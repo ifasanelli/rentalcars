@@ -17,14 +17,20 @@ class ClientsController < ApplicationController
 
     def create
         @client = Client.new(client_params)
-        @client.save
-        redirect_to @client
+        if @client.save
+            redirect_to @client
+        else  
+            render :new
+        end
     end
 
     def update
         @client = Client.find(params[:id])
-        @client.update(client_params)
-        redirect_to @client
+        if @client.update(client_params)
+            redirect_to @client
+        else 
+            render :edit
+        end
     end
 
     def destroy

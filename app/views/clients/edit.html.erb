@@ -20,6 +20,15 @@
   </div>
 <% end %>
 
+<div class="col-sm-10">
+    <% if @client.errors.any?%>
+        <p>Você deve corrigir os erros para continuar:</p>
+        
+        <% @client.errors.full_messages.each do |message|  %>
+            <p><%= message %></p>
+        <% end %>
+    <% end %>
+</div>
 
 <%= link_to 'Voltar', clients_path, class:"btn btn-outline-dark etc-pdn-horz" %>
 
