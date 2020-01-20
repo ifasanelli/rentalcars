@@ -68,5 +68,24 @@ feature 'Admin register client' do
         expect(page).to have_content('Email já existente')
         expect(page).to have_content('CPF já existente')
       end
-      
+      scenario 'and validates cpf' do
+        user = User.create!(email: 'italo@italo.com', password:123456)
+        visit root_path
+        click_on 'Entrar'
+        within 'form' do
+            fill_in 'Email', with: 'italo@italo.com'
+            fill_in 'Senha', with: '123456'
+            click_on 'Entrar'
+        end
+
+        click_on 'Clientes'
+        click_on 'Novo cliente'
+        fill_in 'Nome', with: 'Italo Fasanelli'
+        fill_in 'Email', with: 'it@email.com'
+        fill_in 'CPF', with: '12312312312'
+        click_on 'Salvar'
+    
+        expect(page).to have_content('Você deve corrigir os erros para continuar:')
+        expect(page).to have_content('CPF inválido! Formato correto: 111.111.111-11')
+    end
 end
