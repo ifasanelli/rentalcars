@@ -1,12 +1,12 @@
 class CarCategoriesController < ApplicationController
     before_action :authenticate_user!
+    before_action :load_car_category, only: [:show, :edit, :update, :destroy]
 
     def index
         @car_categories = CarCategory.all 
     end
 
     def show
-        @car_category = CarCategory.find(params[:id])
     end
 
     def new
@@ -14,7 +14,6 @@ class CarCategoriesController < ApplicationController
     end
 
     def edit
-        @car_category = CarCategory.find(params[:id])
     end
 
     def create
@@ -27,7 +26,6 @@ class CarCategoriesController < ApplicationController
     end
 
     def update
-        @car_category = CarCategory.find(params[:id])
         if @car_category.update(car_category_params)
             redirect_to @car_category
         else  
@@ -36,7 +34,6 @@ class CarCategoriesController < ApplicationController
     end
 
     def destroy
-        @car_category = CarCategory.find(params[:id])
         @car_category.destroy
         redirect_to car_categories_path
     end
@@ -45,5 +42,9 @@ class CarCategoriesController < ApplicationController
 
     def car_category_params
         params.require(:car_category).permit(:name, :daily_rate, :car_insurance, :third_party_insurance)
+    end
+
+    def load_car_category
+        @car_category = CarCategory.find(params[:id])
     end
 end

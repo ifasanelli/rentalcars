@@ -1,0 +1,38 @@
+<h2 class="etc-pdn-vert">Locações</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Data Inicial</th>
+      <th scope="col">Data Final</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Categoria</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rentals.each do |rental|  %>
+        <tr>
+            <td><%= link_to rental.code, rental_path(rental.id), class:"text-dark" %></td>
+            <td><%= rental.start_date %></td>
+            <td><%= rental.end_date %></td>
+            <td><%= rental.client.name %></td>
+            <td><%= rental.car_category.name %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Voltar', root_path, class:"btn btn-outline-dark etc-pdn-horz" %>
+
+
+<% content_for :busca do %>
+    <%= form_tag "/results", method: :get, class:"form-inline my-2 my-lg-0" do %>
+    <%= text_field_tag :q, nil, placeholder: 'Buscar', class:"form-control mr-sm-2" %>
+    <%= submit_tag 'Buscar', class:"btn btn-outline-dark my-2 my-sm-0" %>
+    <% end %> 
+<% end %>
+
+
