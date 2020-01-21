@@ -1,12 +1,12 @@
 class ManufacturersController < ApplicationController
     before_action :authenticate_user!
+    before_action :load_manufacturer, only: [:show, :edit, :update, :destroy]
 
     def index
         @manufacturers = Manufacturer.all
     end
 
     def show
-        @manufacturer = Manufacturer.find(params[:id])
     end
 
     def new
@@ -14,7 +14,6 @@ class ManufacturersController < ApplicationController
     end
 
     def edit
-        @manufacturer = Manufacturer.find(params[:id])
     end
 
     def create
@@ -27,7 +26,6 @@ class ManufacturersController < ApplicationController
     end
 
     def update
-        @manufacturer = Manufacturer.find(params[:id])
         if @manufacturer.update(manufacturer_params)
             redirect_to @manufacturer
         else
@@ -36,7 +34,6 @@ class ManufacturersController < ApplicationController
     end
 
     def destroy
-        @manufacturer = Manufacturer.find(params[:id])
         @manufacturer.destroy 
         redirect_to manufacturers_path
     end
@@ -45,5 +42,9 @@ class ManufacturersController < ApplicationController
 
     def manufacturer_params
       params.require(:manufacturer).permit(:name)
+    end
+
+    def load_manufacturer
+        @manufacturer = Manufacturer.find(params[:id])
     end
 end
