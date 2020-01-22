@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin search rental' do
-  scenario 'by exactly query' do
+  scenario 'by partial query' do
     user = User.create!(email: 'italo@email.com', password: '123456')
     client = Client.create!(name: 'Mariana', 
                             cpf: '369.718.887-34', 
@@ -29,7 +29,7 @@ feature 'Admin search rental' do
     login_as(user, scope: :user)
     visit root_path
     click_on 'Locações'
-    fill_in 'Buscar', with: 'CA000'
+    fill_in 'Buscar locação por código', with: 'CA000'
     click_on 'Buscar'
 
     expect(page).to have_content('CA000')

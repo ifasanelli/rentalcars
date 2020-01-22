@@ -4,23 +4,30 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Código</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Email do cliente</th>
+      <th scope="col">CPF do cliente</th>
       <th scope="col">Data Inicial</th>
       <th scope="col">Data Final</th>
-      <th scope="col">Cliente</th>
       <th scope="col">Categoria</th>
     </tr>
   </thead>
   <tbody>
     <tr>
         <td><%= @rental.code %></td>
-        <td><%= @rental.start_date %></td>
-        <td><%= @rental.end_date %></td>
         <td><%= @rental.client.name %></td>
+        <td><%= @rental.client.email %></td>
+        <td><%= @rental.client.cpf %></td>
+        <td><%= @rental.start_date.strftime('%d/%m/%Y')  %></td>
+        <td><%= @rental.end_date.strftime('%d/%m/%Y')  %></td>
         <td><%= @rental.car_category.name %></td>
     </tr>
   </tbody>
 </table>
 
 
-
-<%= link_to 'Voltar', rentals_path, class:"btn btn-outline-dark etc-pdn-horz" %>
+<div class="col-sm-5 etc-pdn-top">
+    <%#= link_to 'Editar', edit_manufacturer_path(@manufacturer), class:"btn btn-warning" %>
+    <%#= link_to 'Apagar', manufacturer_path(@manufacturer), method: :delete, class: "btn btn-danger", data: { confirm: 'Quer apagar este fabricante?' } %>
+    <%= link_to 'Voltar', rentals_path, class:"btn btn-outline-dark etc-pdn-horz" %>
+</div>

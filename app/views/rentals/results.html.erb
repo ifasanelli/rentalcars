@@ -6,9 +6,10 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Código</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Email do cliente</th>
       <th scope="col">Data Inicial</th>
       <th scope="col">Data Final</th>
-      <th scope="col">Cliente</th>
       <th scope="col">Categoria</th>
     </tr>
   </thead>
@@ -16,9 +17,10 @@
     <% @rentals.each do |rental|  %>
         <tr>
             <td><%= link_to rental.code, rental_path(rental.id), class:"text-dark" %></td>
-            <td><%= rental.start_date %></td>
-            <td><%= rental.end_date %></td>
             <td><%= rental.client.name %></td>
+            <td><%= rental.client.email %></td>
+            <td><%= rental.start_date.strftime('%d/%m/%Y')  %></td>
+            <td><%= rental.end_date.strftime('%d/%m/%Y')  %></td>
             <td><%= rental.car_category.name %></td>
         </tr>
     <% end %>
