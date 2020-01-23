@@ -1,0 +1,11 @@
+<h2>Escolha o carro:</h2>
+
+<%= form_with url: start_rental_path(@rental.id), local: true do %>
+    <div class="form-group row">
+        <%= label_tag :car_id, 'Carro', class:"col-sm-1" %>
+        <%= select_tag :car_id, options_from_collection_for_select(@cars, :id, :description), class:"form-control col-sm-10" %>
+    </div>
+    <div class="col-sm-5">
+        <%= submit_tag 'Efetivar locação', class: "btn btn-success" %>
+    </div>
+<% end %>

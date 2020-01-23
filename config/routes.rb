@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   resources :car_categories
   resources :car_models
   resources :clients
-  resources :rentals, only: [:index, :show, :new, :create]
-  get 'results', to: 'rentals#results'
+  resources :rentals, only: [:index, :show, :new, :create, :destroy] do
+    get 'results', on: :collection
+    get 'start', on: :member
+    post 'start', on: :member, to: 'rentals#confirm_start'
+
+  end
+  resources :cars, only: [:index, :show, :new, :create]
+  resources :car_rentals, only: [:show]
 end

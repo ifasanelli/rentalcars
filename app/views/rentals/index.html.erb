@@ -16,8 +16,8 @@
     <% @rentals.each do |rental|  %>
         <tr>
             <td><%= link_to rental.code, rental_path(rental.id), class:"text-dark" %></td>
-            <td><%= rental.start_date %></td>
-            <td><%= rental.end_date %></td>
+            <td><%= rental.start_date.strftime('%d/%m/%Y')  %></td>
+            <td><%= rental.end_date.strftime('%d/%m/%Y')  %></td>
             <td><%= rental.client.name %></td>
             <td><%= rental.car_category.name %></td>
         </tr>
@@ -31,7 +31,7 @@
 
 
 <% content_for :busca do %>
-    <%= form_tag "/results", method: :get, class:"form-inline my-2 my-lg-0" do %>
+    <%= form_tag "/rentals/results", method: :get, class:"form-inline my-2 my-lg-0" do %>
     <%= text_field_tag :q, nil, placeholder: 'Buscar locação por código', class:"form-control mr-sm-2" %>
     <%= submit_tag 'Buscar', class:"btn btn-outline-dark my-2 my-sm-0" %>
     <% end %> 

@@ -27,6 +27,25 @@ class RentalsController < ApplicationController
         redirect_to @rental
     end
 
+    def destroy
+        @rental = Rental.find(params[:id])
+        @rental.destroy
+        redirect_to rentals_path
+    end
+
+    def start
+        @rental = Rental.find(params[:id])
+        @cars = Car.where(car_model: @rental.car_category.car_models)
+    end
+
+    def confirm_start
+        @rental = Rental.find(params[:id])
+        @car = Car.find(params[:car_id])
+        @car_rental = CarRental.create(rental: @rental, car: @car)
+        redirect_to @car_rental
+    
+    end
+
     private
     
     def rental_params
