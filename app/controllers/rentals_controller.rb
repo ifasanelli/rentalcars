@@ -23,6 +23,7 @@ class RentalsController < ApplicationController
     def create
         @rental = Rental.new(rental_params)
         @rental.code = SecureRandom.hex(6)
+        @rental.user = current_user
         @rental.save
         redirect_to @rental
     end

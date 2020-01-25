@@ -14,17 +14,20 @@ feature 'Admin search rental' do
                    start_date: 1.day.from_now, 
                    end_date: 5.day.from_now, 
                    client: client, 
-                   car_category: car_category)
+                   car_category: car_category, 
+                   user: user)
     Rental.create!(code: 'CA001', 
                    start_date: 1.week.from_now, 
                    end_date: 2.week.from_now, 
                    client: client, 
-                   car_category: car_category)
+                   car_category: car_category,
+                   user: user)
     Rental.create!(code: 'CA002', 
                    start_date: 20.day.from_now, 
                    end_date: 25.day.from_now, 
                    client: client, 
-                   car_category: car_category)
+                   car_category: car_category,
+                    user: user)
 
     login_as(user, scope: :user)
     visit root_path

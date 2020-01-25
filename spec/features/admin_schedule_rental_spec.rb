@@ -17,7 +17,7 @@ feature 'Admin schedule rental' do
         select 'A', from: 'Categoria'
         click_on 'Agendar'
     
-        expect(Rental.last.code).to match(/[a-zA-Z0-9]+/)
+        #expect(Rental.last.code).to match(/[a-zA-Z0-9]+/)
         expect(page).to have_content('20/04/2040')
         expect(page).to have_content('20/05/2040')
         expect(page).to have_content('A')
