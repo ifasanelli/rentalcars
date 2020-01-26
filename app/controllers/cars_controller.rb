@@ -13,12 +13,27 @@ class CarsController < ApplicationController
         @subsidiaries = Subsidiary.all
     end
 
+    def edit
+        @car = Car.find(params[:id])
+        @car_models = CarModel.all
+        @subsidiaries = Subsidiary.all
+    end
+
     def create
         @car_models = CarModel.all
         @subsidiaries = Subsidiary.all
         @car = Car.new(car_params)
         @car.status = 0
         @car.save
+        redirect_to @car
+    end
+
+    def update
+        @car_models = CarModel.all
+        @subsidiaries = Subsidiary.all
+        @car = Car.find(params[:id])
+        @car.status = 0
+        @car.update(car_params)
         redirect_to @car
     end
 
