@@ -14,7 +14,7 @@ feature 'User sign in' do
         end
 
         expect(current_path).to eq(root_path)
-        expect(page).to have_content('Login efetuado com sucesso!')
+        expect(page).to have_content('Signed in successfully')
         expect(page).to have_content('Sair')
         expect(page).to_not have_content('Entrar')
         expect(page).to have_content("Olá, #{user.email}")
@@ -33,7 +33,7 @@ feature 'User sign in' do
         end
         click_on 'Sair'
 
-        expect(page).to have_content('Saiu com sucesso.')
+        expect(page).to have_content('Signed out successfully')
         expect(page).not_to have_link('Sair')
         expect(page).to have_link('Entrar')
         expect(current_path).to eq(root_path)
