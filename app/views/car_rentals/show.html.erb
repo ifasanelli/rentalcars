@@ -1,2 +1,5 @@
-<h2>Locação <%= @car_rental.rental.code %></h2>
-Carro: <%= @car_rental.car.description %>
+<h2 class="text-success">Locação Efetivada!</h2>
+<h3 class="etc-pdn">Código: <%= @car_rental.rental.code %></h3>
+<h3 class="etc-pdn">Carro: <%= @car_rental.car.description %></h3>
+
+<%= link_to 'Voltar', rentals_path, class:"btn btn-outline-dark etc-pdn-show" %>

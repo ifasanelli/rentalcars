@@ -1,5 +1,7 @@
 <h2 class="etc-pdn-vert">Carros</h2>
 
+<%= link_to 'Novo carro', new_car_path, class:"btn btn-dark etc-pdn-horz etc-pdn-vert" %>
+
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -19,12 +21,12 @@
             <td><%= car.car_model.motorization %></td>
             <td><%= car.license_plate %></td>
             <td><%= car.color %></td>
-            <td><%= car.mileage %></td>
+            <td><%= car.mileage %> mil Km</td>
             <td><%= car.subsidiary.name %></td>
             <% if car.status == 'available' %>
-                <td class="text-success"><%= car.status %></td>
+                <td class="text-success">Disponível</td>
             <% else %>
-                <td class="text-danger"><%= car.status %></td>
+                <td class="text-danger">Ocupado</td>
             <% end %>
         </tr>
     <% end %>
