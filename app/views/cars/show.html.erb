@@ -1,0 +1,35 @@
+<h2 class="etc-pdn-vert">Carro</h2>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Modelo</th>
+      <th scope="col">Motorização</th>
+      <th scope="col">Placa</th>
+      <th scope="col">Cor</th>
+      <th scope="col">Kilometragem</th>
+      <th scope="col">Filial</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><%= @car.car_model.name %></td>
+        <td><%= @car.car_model.motorization %></td>
+        <td><%= @car.license_plate %></td>
+        <td><%= @car.color %></td>
+        <td><%= @car.mileage %></td>
+        <td><%= @car.subsidiary.name %></td>
+        <% if @car.status == 'available' %>
+            <td class="text-success"><%= @car.status %></td>
+        <% else %>
+            <td class="text-danger"><%= @car.status %></td>
+        <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<div class="col-sm-5 etc-pdn-top">
+    <%= link_to 'Voltar', cars_path, class:"btn btn-outline-dark" %>
+</div>

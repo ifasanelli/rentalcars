@@ -1,0 +1,36 @@
+<h2 class="etc-pdn-vert">Carros</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Modelo</th>
+      <th scope="col">Motorização</th>
+      <th scope="col">Placa</th>
+      <th scope="col">Cor</th>
+      <th scope="col">Kilometragem</th>
+      <th scope="col">Filial</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car|  %>
+        <tr>
+            <td><%= link_to car.car_model.name, car_path(car.id), class:"text-dark" %></td>
+            <td><%= car.car_model.motorization %></td>
+            <td><%= car.license_plate %></td>
+            <td><%= car.color %></td>
+            <td><%= car.mileage %></td>
+            <td><%= car.subsidiary.name %></td>
+            <% if car.status == 'available' %>
+                <td class="text-success"><%= car.status %></td>
+            <% else %>
+                <td class="text-danger"><%= car.status %></td>
+            <% end %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Voltar', root_path, class:"btn btn-outline-dark etc-pdn-horz" %>

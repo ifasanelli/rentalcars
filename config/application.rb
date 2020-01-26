@@ -29,6 +29,7 @@ module RentalCars
     
     config.encoding = "utf-8"
     config.i18n.default_locale = :'pt-BR'
+    #config.i18n.default_locale = :en
 
     # Don't generate system test files.
     config.generators.system_tests = nil

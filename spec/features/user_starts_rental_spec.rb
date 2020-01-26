@@ -10,7 +10,10 @@ feature 'User starts rental' do
         Rental.create!(code: 'CA002', start_date: Date.current, end_date: 10.day.from_now, client: other_client, car_category: car_category, user: user)
         manufacturer = Manufacturer.create(name: 'Fiat')
         car_model = CarModel.create!(name: 'Palio', year: '2017', manufacturer: manufacturer, motorization: '1.6', car_category: car_category, fuel_type: 'Gasolina')
-        car = Car.create!(license_plate: 'ABC-1234', color: 'Prata', car_model: car_model, mileage: '180')
+        subsidiary = Subsidiary.create!(name: 'Filial Santos', 
+                                        cnpj: '13.131.313/0001-13', 
+                                        address: 'Rua dos Santos, 13')
+        car = Car.create!(license_plate: 'ABC-1234', color: 'Prata', car_model: car_model, mileage: '180', subsidiary: subsidiary)
         
 
         login_as(user, scope: :user)

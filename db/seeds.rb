@@ -6,25 +6,39 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-client = Client.create!(name: 'Lúcia', 
-    cpf: '939.718.887-23', 
-    email: 'lucia@lucia.com')
-car_category = CarCategory.create!(name: 'AA', 
-               daily_rate: 165.6, 
-               car_insurance: 80.59, 
-               third_party_insurance: 55.95)
-Rental.create!(code: 'CA000', 
-                start_date: 1.day.from_now, 
-                end_date: 5.day.from_now, 
-                client: client, 
-                car_category: car_category)
-Rental.create!(code: 'CA001', 
-                start_date: 1.week.from_now, 
-                end_date: 2.week.from_now, 
-                client: client, 
-                car_category: car_category)
-Rental.create!(code: 'CA002', 
-                start_date: 20.day.from_now, 
-                end_date: 25.day.from_now, 
-                client: client, 
-                car_category: car_category)
+
+manufacturer = Manufacturer.create(name: 'Volvo')
+car_category = CarCategory.create!(name: 'B', 
+                                   daily_rate: 95.98, 
+                                   car_insurance: 30.45, 
+                                   third_party_insurance: 22.99)
+car_model = CarModel.create!(name: 'XC-60', 
+                             year: '2017', 
+                             manufacturer: manufacturer, 
+                             motorization: '1.6', 
+                             car_category: car_category, 
+                             fuel_type: 'Gasolina')
+other_car_model = CarModel.create!(name: 'XC-80', 
+                                   year: '2019', 
+                                   manufacturer: manufacturer, 
+                                   motorization: '1.8', 
+                                   car_category: car_category, 
+                                   fuel_type: 'Gasolina')
+subsidiary = Subsidiary.create!(name: 'Filial São José', 
+                                cnpj: '10.131.313/0001-13', 
+                                address: 'Rua dos Santos, 13')
+other_subsidiary = Subsidiary.create!(name: 'Filial Pirituba', 
+                                      cnpj: '11.141.414/0001-14', 
+                                      address: 'Rua de Osasco, 14')
+car = Car.create!(license_plate: 'ABC-1234', 
+                  color: 'Prata', 
+                  car_model: car_model, 
+                  mileage: '180', 
+                  subsidiary: subsidiary,
+                  status: 0)
+other_car = Car.create!(license_plate: 'DEF-5678', 
+                        color: 'Branco', 
+                        car_model: other_car_model, 
+                        mileage: '40', 
+                        subsidiary: other_subsidiary,
+                        status: 5)
