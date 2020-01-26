@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     post 'start', on: :member, to: 'rentals#confirm_start'
 
   end
-  resources :cars, only: [:index, :show, :new, :create, :edit, :update]
+  resources :cars
   resources :car_rentals, only: [:show]
 end
