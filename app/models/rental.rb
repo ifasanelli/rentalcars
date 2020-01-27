@@ -6,12 +6,11 @@ class Rental < ApplicationRecord
   validate :start_date_cannot_be_in_the_past
   validate :end_date_cannot_be_before_start_date
 
-  enum status: [ :scheduled, :in_progress ]
-
+  enum status: { scheduled: 0, confirmed: 5 }
   
 
   def start_date_cannot_be_in_the_past
-    if start_date < Date.today
+    if start_date < Date.current
       errors.add(:start_date, "Data inicial não pode ser antes de hoje")
     end
   end

@@ -3,14 +3,14 @@ require 'rails_helper'
 feature 'Admin view subsidiary' do
     scenario 'seccessfully' do
         Subsidiary.create!(name: 'Santos', 
-                           cnpj: '13.131.313/0001-13', 
+                           cnpj: '70047047000196', 
                            address: 'Rua dos Santos, 13')
         Subsidiary.create!(name: 'Osasco', 
-                            cnpj: '14.141.414/0001-14', 
+                            cnpj: '67285256000163', 
                             address: 'Rua de Osasco, 14')
         Subsidiary.create!(name: 'Guarulhos', 
-                                cnpj: '19.191.919/0001-19', 
-                                address: 'Rua de Guarulhos, 19')
+                           cnpj: '19139393000147', 
+                           address: 'Rua de Guarulhos, 19')
         user = User.create!(email: 'italo@italo.com', password:123456)
         visit root_path
         click_on 'Entrar'
@@ -23,23 +23,23 @@ feature 'Admin view subsidiary' do
         click_on 'Filiais'
 
         expect(page).to have_content('Santos')
-        expect(page).to have_content('13.131.313/0001-13')
+        expect(page).to have_content('70047047000196')
         expect(page).to have_content('Rua dos Santos, 13')
         expect(page).to have_content('Osasco')
-        expect(page).to have_content('14.141.414/0001-14')
+        expect(page).to have_content('67285256000163')
         expect(page).to have_content('Rua de Osasco, 14')
         expect(page).to have_content('Guarulhos')
-        expect(page).to have_content('19.191.919/0001-19')
+        expect(page).to have_content('19139393000147')
         expect(page).to have_content('Rua de Guarulhos, 19')
         expect(page).to have_content('Voltar')
     end
 
     scenario 'and view subsidiary details' do
         Subsidiary.create!(name: 'Santos', 
-                           cnpj: '13.131.313/0001-13', 
+                           cnpj: '70047047000196', 
                            address: 'Rua dos Santos, 13')
         Subsidiary.create!(name: 'Osasco', 
-                           cnpj: '14.141.414/0001-14', 
+                           cnpj: '67285256000163', 
                            address: 'Rua de Osasco, 14')
         user = User.create!(email: 'italo@italo.com', password:123456)
         visit root_path
@@ -54,10 +54,10 @@ feature 'Admin view subsidiary' do
         click_on 'Santos'
 
         expect(page).to have_content('Santos')
-        expect(page).to have_content('13.131.313/0001-13')
+        expect(page).to have_content('70047047000196')
         expect(page).to have_content('Rua dos Santos, 13')
         expect(page).to_not have_content('Osasco')
-        expect(page).to_not have_content('14.141.414/0001-14')
+        expect(page).to_not have_content('67285256000163')
         expect(page).to_not have_content('Rua de Osasco, 14')
         expect(page).to have_content('Voltar')
     end

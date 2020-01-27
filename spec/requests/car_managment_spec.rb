@@ -5,7 +5,7 @@ describe 'Car Menagement' do
         it 'renders a json succssfully' do
             Manufacturer.create!(name: 'BMW')
             subsidiary = Subsidiary.create!(name: 'Filial Ipiranga', 
-                                            cnpj: '11.010.101/0001-11',
+                                            cnpj: '70976813000105',
                                             address: 'Alameda Santos, 1293')
             car_category = CarCategory.create!(name: 'A', 
                                                daily_rate: 30, 
@@ -38,7 +38,7 @@ describe 'Car Menagement' do
         it 'renders a json succssfully' do
             manufacturer = Manufacturer.create!(name: 'BMW')
             subsidiary = Subsidiary.create!(name: 'Filial Ipiranga', 
-                                            cnpj: '11.010.101/0001-11',
+                                            cnpj: '70976813000105',
                                             address: 'Alameda Santos, 1293')
             car_category = CarCategory.create!(name: 'A', 
                                                daily_rate: 30, 
@@ -103,7 +103,7 @@ describe 'Car Menagement' do
     it 'should create a car' do
         manufacturer = Manufacturer.create!(name: 'BMW')
         subsidiary = Subsidiary.create!(name: 'Filial Ipiranga', 
-                                        cnpj: '11.010.101/0001-11',
+                                        cnpj: '70976813000105',
                                         address: 'Alameda Santos, 1293')
         car_category = CarCategory.create!(name: 'A', 
                                            daily_rate: 30, 

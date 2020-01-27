@@ -14,12 +14,12 @@ feature 'Admin register subsidiary' do
         click_on 'Filiais'
         click_on 'Nova filial'
         fill_in 'Nome', with: 'Ipiranga'
-        fill_in 'CNPJ', with: '11.111.111/0001-11'
+        fill_in 'CNPJ', with: '70047047000196'
         fill_in 'Endereço', with: 'Rua do Ipioranga, 11'
         click_on 'Salvar'
 
         expect(page).to have_content('Ipiranga')
-        expect(page).to have_content('11.111.111/0001-11')
+        expect(page).to have_content('70047047000196')
         expect(page).to have_content('Rua do Ipioranga, 11')
         expect(page).to have_content('Voltar')
     end
@@ -47,7 +47,7 @@ feature 'Admin register subsidiary' do
     end
     scenario 'and validates duplicated names' do
         Subsidiary.create!(name: 'Baixada Santista', 
-                            cnpj: '13.131.313/0001-13', 
+                            cnpj: '70047047000196', 
                             address: 'Rua dos Santos, 13')
         user = User.create!(email: 'italo@italo.com', password:123456)
         visit root_path
@@ -61,7 +61,7 @@ feature 'Admin register subsidiary' do
         click_on 'Filiais'
         click_on 'Nova filial'
         fill_in 'Nome', with: 'Baixada Santista'
-        fill_in 'CNPJ', with: '13.131.313/0001-13'
+        fill_in 'CNPJ', with: '70047047000196'
         fill_in 'Endereço', with: 'Rua da Baixada,131'
         click_on 'Salvar'
     
@@ -87,6 +87,7 @@ feature 'Admin register subsidiary' do
         click_on 'Salvar'
     
         expect(page).to have_content('Você deve corrigir os erros para continuar:')
-        expect(page).to have_content('CNPJ inválido! Formato correto: 11.111.111/1111-11')
+        expect(page).to have_content('Cnpj inválido!')
     end
 end
+

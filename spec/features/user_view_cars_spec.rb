@@ -21,10 +21,10 @@ feature 'User view cars' do
                                            car_category: car_category, 
                                            fuel_type: 'Gasolina')
         subsidiary = Subsidiary.create!(name: 'Filial Santos', 
-                                        cnpj: '13.131.313/0001-13', 
+                                        cnpj: '37645468000143', 
                                         address: 'Rua dos Santos, 13')
         other_subsidiary = Subsidiary.create!(name: 'Filial Osasco', 
-                                              cnpj: '14.141.414/0001-14', 
+                                              cnpj: '70976813000105', 
                                               address: 'Rua de Osasco, 14')
         car = Car.create!(license_plate: 'ABC-1234', 
                           color: 'Prata', 

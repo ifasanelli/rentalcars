@@ -1,5 +1,10 @@
 <h2 class="text-success">Locação Efetivada!</h2>
 <h3 class="etc-pdn">Código: <%= @car_rental.rental.code %></h3>
-<h3 class="etc-pdn">Carro: <%= @car_rental.car.description %></h3>
+<h3 class="etc-pdn">Diária: R$<%= @car_rental.price %></h3>
+<h3 class="etc-pdn">Fabricante: <%= @car_rental.car.car_model.manufacturer.name %></h3>
+<h3 class="etc-pdn">Modelo: <%= @car_rental.car.car_model.name %></h3>
+<h3 class="etc-pdn">Placa: <%= @car_rental.car.license_plate %></h3>
+<h3 class="etc-pdn">Cor: <%= @car_rental.car.color %></h3>
+<h3 class="etc-pdn">Quilometragem inicial: <%= @car_rental.start_mileage %> mil Km.</h3>
 
 <%= link_to 'Voltar', rentals_path, class:"btn btn-outline-dark etc-pdn-show" %>

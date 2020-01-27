@@ -11,9 +11,9 @@ feature 'User starts rental' do
         manufacturer = Manufacturer.create(name: 'Fiat')
         car_model = CarModel.create!(name: 'Palio', year: '2017', manufacturer: manufacturer, motorization: '1.6', car_category: car_category, fuel_type: 'Gasolina')
         subsidiary = Subsidiary.create!(name: 'Filial Santos', 
-                                        cnpj: '13.131.313/0001-13', 
+                                        cnpj: '26521522000122', 
                                         address: 'Rua dos Santos, 13')
-        car = Car.create!(license_plate: 'ABC-1234', color: 'Prata', car_model: car_model, mileage: '180', subsidiary: subsidiary)
+        car = Car.create!(license_plate: 'ABC-1234', color: 'Prata', car_model: car_model, mileage: '180', subsidiary: subsidiary, status: 'available')
         
 
         login_as(user, scope: :user)
@@ -30,6 +30,9 @@ feature 'User starts rental' do
       
         #Assert
         expect(page).to have_content("CA001")
-        expect(page).to have_content('Fiat / Palio - ABC-1234 - Prata')
+        expect(page).to have_content('Fiat')
+        expect(page).to have_content('Palio')
+        expect(page).to have_content('ABC-1234')
+        expect(page).to have_content('Prata')
     end
 end

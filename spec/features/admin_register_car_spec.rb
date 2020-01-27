@@ -15,7 +15,7 @@ feature 'Admin register a car' do
                                      car_category: car_category, 
                                      fuel_type: 'Gasolina')
         subsidiary = Subsidiary.create!(name: 'Filial Santos', 
-                                        cnpj: '13.131.313/0001-13', 
+                                        cnpj: '70047047000196', 
                                         address: 'Rua dos Santos, 13')
         car = Car.create!(license_plate: 'ABC-1234', 
                           color: 'Prata', 

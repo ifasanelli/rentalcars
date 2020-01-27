@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin view subsidiary' do
     scenario 'seccessfully' do
         Subsidiary.create!(name: 'Baixada Santista', 
-                           cnpj: '13.131.313/0001-13', 
+                           cnpj: '70047047000196', 
                            address: 'Rua dos Santos, 13')
         user = User.create!(email: 'italo@italo.com', password:123456)
         visit root_path
@@ -21,14 +21,14 @@ feature 'Admin view subsidiary' do
         click_on 'Salvar'
 
         expect(page).to have_content('Santos')
-        expect(page).to have_content('13.131.313/0001-13')
+        expect(page).to have_content('70047047000196')
         expect(page).to have_content('Rua dos Santos, 13')
         expect(page).to have_content('Voltar')
     end
 
     scenario 'and validates empty fields' do
         Subsidiary.create!(name: 'Baixada Santista', 
-                           cnpj: '13.131.313/0001-13', 
+                           cnpj: '70047047000196', 
                            address: 'Rua dos Santos, 13')
         user = User.create!(email: 'italo@italo.com', password:123456)
         visit root_path
@@ -54,7 +54,7 @@ feature 'Admin view subsidiary' do
     end
     scenario 'and validates cnpj' do
         Subsidiary.create!(name: 'Baixada Santista', 
-                           cnpj: '13.131.313/0001-13', 
+                           cnpj: '70047047000196', 
                            address: 'Rua dos Santos, 13')
         user = User.create!(email: 'italo@italo.com', password:123456)
         visit root_path
@@ -74,6 +74,6 @@ feature 'Admin view subsidiary' do
         click_on 'Salvar'
     
         expect(page).to have_content('Você deve corrigir os erros para continuar:')
-        expect(page).to have_content('CNPJ inválido! Formato correto: 11.111.111/1111-11')
+        expect(page).to have_content('Cnpj inválido!')
     end
 end
