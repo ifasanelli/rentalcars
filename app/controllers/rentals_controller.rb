@@ -1,5 +1,6 @@
 class RentalsController < ApplicationController
     before_action :authenticate_user!
+    before_action :load_dependencies, only: [:new, :create]
 
     def index
         @rentals = Rental.all
@@ -16,16 +17,17 @@ class RentalsController < ApplicationController
 
     def new
         @rental = Rental.new
-        @clients = Client.all
-        @car_categories = CarCategory.all
     end
     
     def create
         @rental = Rental.new(rental_params)
         @rental.code = SecureRandom.hex(6)
         @rental.user = current_user
-        @rental.save
-        redirect_to @rental
+        if @rental.save
+            redirect_to @rental
+        else 
+            render :new
+        end
     end
 
     def destroy
@@ -59,5 +61,11 @@ class RentalsController < ApplicationController
         params.require(:rental).permit(:start_date, :end_date,:client_id, :car_category_id)
     end
     
+
+	def load_dependencies
+		@car_categories = CarCategory.all
+		@clients = Client.all
+	end
+
         
 end
