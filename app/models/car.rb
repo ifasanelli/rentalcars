@@ -6,5 +6,4 @@ class Car < ApplicationRecord
   def description
     "#{car_model.manufacturer.name} / #{car_model.name} - #{license_plate} - #{color}"
   end
-
 end

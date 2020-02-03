@@ -55,6 +55,11 @@ end
 group :test do
   # Acceptance test framework for web applications
   gem 'capybara', '~> 3.29'
+  # SimpleCov
+  gem 'simplecov'
+  # Rubocop
+  gem 'rubocop'
+  gem 'rubocop-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

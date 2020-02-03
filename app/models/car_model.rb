@@ -1,8 +1,7 @@
 class CarModel < ApplicationRecord
   belongs_to :car_category
   belongs_to :manufacturer
-  has_many :cars
-
+  has_many :cars, dependent: :restrict_with_exception
 
   validates :name, presence: {message: 'Nome não pode ficar em branco'}
   validates :motorization, presence: {message: 'Motorização não pode ficar em branco'}

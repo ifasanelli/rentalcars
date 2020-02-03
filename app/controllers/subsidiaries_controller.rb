@@ -1,50 +1,48 @@
 class SubsidiariesController < ApplicationController
-    before_action :authenticate_user!
-    before_action :load_subsidiary, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :load_subsidiary, only: %i[show edit update destroy]
 
-    def index
-        @subsidiaries = Subsidiary.all 
+  def index
+   @subsidiaries = Subsidiary.all
+  end
+
+  def show; end
+
+  def new
+    @subsidiary = Subsidiary.new
+  end
+
+  def edit; end
+
+  def create
+    @subsidiary = Subsidiary.new(subsidiary_params)
+    if @subsidiary.save
+      redirect_to @subsidiary
+    else
+      render :new
     end
+  end
 
-    def show
+  def update
+    if @subsidiary.update(subsidiary_params)
+      redirect_to @subsidiary
+    else
+      render :edit
     end
+  end
 
-    def new
-        @subsidiary = Subsidiary.new
-    end
+  def destroy
+    @subsidiary.destroy
+    redirect_to subsidiaries_path
+  end
 
-    def edit
-    end
+  private
 
-    def create
-        @subsidiary = Subsidiary.new(subsidiary_params)
-        if @subsidiary.save
-            redirect_to @subsidiary
-        else 
-            render :new
-        end
-    end
+  def subsidiary_params
+    params.require(:subsidiary).permit(:name, :cnpj, :address)
+  end
 
-    def update
-        if @subsidiary.update(subsidiary_params)
-            redirect_to @subsidiary
-        else
-            render :edit
-        end
-    end
-
-    def destroy
-        @subsidiary.destroy 
-        redirect_to subsidiaries_path
-    end
-
-    private
-
-    def subsidiary_params
-        params.require(:subsidiary).permit(:name, :cnpj, :address)
-    end
-
-    def load_subsidiary
-        @subsidiary = Subsidiary.find(params[:id])
-    end
+  def load_subsidiary
+    @subsidiary = Subsidiary.find(params[:id])
+  end
 end

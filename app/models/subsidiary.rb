@@ -1,5 +1,5 @@
 class Subsidiary < ApplicationRecord
-    has_many :cars
+    has_many :cars, dependent: :restrict_with_exception
     validates :name, presence: {message: 'Nome não pode ficar em branco'}, uniqueness: {message: 'Filial já existente'}
     validates :cnpj, presence: {message: 'CNPJ não pode ficar em branco'}, uniqueness: {message: 'CNPJ já existente'}
     validates :address, presence: {message: 'Endereço não pode ficar em branco'}
@@ -7,23 +7,22 @@ class Subsidiary < ApplicationRecord
     validate :valid_cnpj
 
     def valid_cnpj
-        nulos = %w{11111111111111 22222222222222 33333333333333 44444444444444 55555555555555 66666666666666 77777777777777 88888888888888 99999999999999 00000000000000}
-        valor = cnpj.scan /[0-9]/
+        nulos = %w[11111111111111 22222222222222 33333333333333 44444444444444 55555555555555 66666666666666 77777777777777 88888888888888 99999999999999 00000000000000]
+        valor = cnpj.scan(/[0-9]/)
         if valor.length == 14
             unless nulos.member?(valor.join)
                 valor = valor.collect{|x| x.to_i}
                 soma = valor[0]*5+valor[1]*4+valor[2]*3+valor[3]*2+valor[4]*9+valor[5]*8+valor[6]*7+valor[7]*6+valor[8]*5+valor[9]*4+valor[10]*3+valor[11]*2
-                soma = soma - (11*(soma/11))
-                resultado1 = (soma==0 || soma==1) ? 0 : 11 - soma
+                soma -= (11*(soma/11))
+                resultado1 = soma.zero? || soma==1 ? 0 : 11 - soma
                 if resultado1 == valor[12]
                     soma = valor[0]*6+valor[1]*5+valor[2]*4+valor[3]*3+valor[4]*2+valor[5]*9+valor[6]*8+valor[7]*7+valor[8]*6+valor[9]*5+valor[10]*4+valor[11]*3+valor[12]*2
-                    soma = soma - (11*(soma/11))
-                    resultado2 = (soma == 0 || soma == 1) ? 0 : 11 - soma
-                    return true if resultado2 == valor[13] 
+                    soma -= (11*(soma/11))
+                    resultado2 = soma.zero? || soma == 1 ? 0 : 11 - soma
+                    return true if resultado2 == valor[13]
                 end
             end
         end
-        return errors.add(:cnpj, "inválido!")
+        errors.add(:cnpj, 'inválido!')
     end
-  
 end
