@@ -1,0 +1,24 @@
+<h2 class="etc-pdn-vert">Acessórios</h2>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Preço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accessories.each do |accessory|  %>
+        <tr>
+            <td><%= link_to accessory.name, accessory_path(accessory.id), class:"text-dark" %></td>
+            <td><%= accessory.full_description %></td>
+            <td><%= accessory.price %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Voltar', root_path, class:"btn btn-outline-dark etc-pdn-horz" %>
