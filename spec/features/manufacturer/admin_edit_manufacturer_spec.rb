@@ -2,16 +2,11 @@ require 'rails_helper'
 
 feature 'Admin edit manufacturer' do
   scenario 'successfully' do
-    Manufacturer.create!(name: 'Fiat')
-    Manufacturer.create!(name: 'Volkswagen')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:manufacturer, name: 'Fiat')
+    create(:manufacturer, name: 'Volkswagen')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-    fill_in 'Email', with: 'italo@italo.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
-    end
 
     click_on 'Fabricantes'
     click_on 'Fiat'
@@ -25,15 +20,10 @@ feature 'Admin edit manufacturer' do
   end
 
   scenario 'and validates empty fields' do
-    Manufacturer.create!(name: 'Fiat')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:manufacturer, name: 'Fiat')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-    fill_in 'Email', with: 'italo@italo.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
-    end
 
     click_on 'Fabricantes'
     click_on 'Fiat'

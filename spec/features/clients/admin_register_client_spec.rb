@@ -2,14 +2,9 @@ require 'rails_helper'
 
 feature 'Admin register client' do
   scenario 'successfully' do
-    User.create!(email: 'italo@italo.com', password:123_456)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-    fill_in 'Email', with: 'italo@italo.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
-    end
 
     click_on 'Clientes'
     click_on 'Novo cliente'
@@ -25,14 +20,9 @@ feature 'Admin register client' do
   end
 
   scenario 'and validates empty fields' do
-    User.create!(email: 'italo@italo.com', password:123_456)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Clientes'
     click_on 'Novo cliente'
@@ -47,19 +37,14 @@ feature 'Admin register client' do
     expect(page).to have_content('CPF não pode ficar em branco')
   end
   scenario 'and validates duplicated fields' do
-    Client.create!(name: 'Mariana Santana', email: 'mari@email.com', cpf: '123.123.123-12')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:client, name: 'Mariana Santana', email: 'mari@email.com', cpf: '123.123.123-12')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Clientes'
     click_on 'Novo cliente'
-    fill_in 'Nome', with: 'Italo Fasanelli'
+    fill_in 'Nome', with: 'Mariana Santana'
     fill_in 'Email', with: 'mari@email.com'
     fill_in 'CPF', with: '123.123.123-12'
     click_on 'Salvar'

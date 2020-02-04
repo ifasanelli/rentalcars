@@ -2,15 +2,10 @@ require 'rails_helper'
 
 feature 'Admin view subsidiary' do
   scenario 'seccessfully' do
-    Subsidiary.create!(name: 'Baixada Santista', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:subsidiary, name: 'Baixada Santista', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Filiais'
     click_on 'Baixada Santista'
@@ -25,15 +20,10 @@ feature 'Admin view subsidiary' do
   end
 
   scenario 'and validates empty fields' do
-    Subsidiary.create!(name: 'Baixada Santista', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:subsidiary, name: 'Baixada Santista', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Filiais'
     click_on 'Baixada Santista'
@@ -49,15 +39,10 @@ feature 'Admin view subsidiary' do
     expect(page).to have_content('Endereço não pode ficar em branco')
   end
   scenario 'and validates cnpj' do
-    Subsidiary.create!(name: 'Baixada Santista', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:subsidiary, name: 'Baixada Santista', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Filiais'
     click_on 'Baixada Santista'

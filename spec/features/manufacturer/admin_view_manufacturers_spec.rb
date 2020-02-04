@@ -2,17 +2,12 @@ require 'rails_helper'
 
 feature 'Admin view manufactures' do
   scenario 'successfully' do
-    Manufacturer.create!(name: 'Fiat')
-    Manufacturer.create!(name: 'Volkswagen')
-    Manufacturer.create!(name: 'Volvo')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:manufacturer)
+    create(:manufacturer, name: 'Volkswagen')
+    create(:manufacturer, name: 'Volvo')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Fabricantes'
 
@@ -23,17 +18,12 @@ feature 'Admin view manufactures' do
   end
 
   scenario 'and see manufacturer details' do
-    Manufacturer.create!(name: 'Fiat')
-    Manufacturer.create!(name: 'Volkswagen')
-    Manufacturer.create!(name: 'Volvo')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:manufacturer)
+    create(:manufacturer, name: 'Volkswagen')
+    create(:manufacturer, name: 'Volvo')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Fabricantes'
     click_on 'Fiat'

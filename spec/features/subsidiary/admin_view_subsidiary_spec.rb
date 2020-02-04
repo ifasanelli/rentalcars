@@ -2,17 +2,12 @@ require 'rails_helper'
 
 feature 'Admin view subsidiary' do
   scenario 'seccessfully' do
-    Subsidiary.create!(name: 'Santos', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
-    Subsidiary.create!(name: 'Osasco', cnpj: '67285256000163', address: 'Rua de Osasco, 14')
-    Subsidiary.create!(name: 'Guarulhos', cnpj: '19139393000147', address: 'Rua de Guarulhos, 19')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:subsidiary, name: 'Santos', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
+    create(:subsidiary, name: 'Osasco', cnpj: '67285256000163', address: 'Rua de Osasco, 14')
+    create(:subsidiary, name: 'Guarulhos', cnpj: '19139393000147', address: 'Rua de Guarulhos, 19')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Filiais'
 
@@ -29,16 +24,11 @@ feature 'Admin view subsidiary' do
   end
 
   scenario 'and view subsidiary details' do
-    Subsidiary.create!(name: 'Santos', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
-    Subsidiary.create!(name: 'Osasco', cnpj: '67285256000163', address: 'Rua de Osasco, 14')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:subsidiary, name: 'Santos', cnpj: '70047047000196', address: 'Rua dos Santos, 13')
+    create(:subsidiary, name: 'Osasco', cnpj: '67285256000163', address: 'Rua de Osasco, 14')
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-    fill_in 'Email', with: 'italo@italo.com'
-    fill_in 'Senha', with: '123456'
-    click_on 'Entrar'
-    end
 
     click_on 'Filiais'
     click_on 'Santos'

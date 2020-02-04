@@ -2,13 +2,12 @@ require 'rails_helper'
 
 feature 'User sign in' do
   scenario 'from home page' do
-    user = User.create!(email: 'italo@italo.com', password:123_456)
-
+    user = create(:user)
     visit root_path
     click_on 'Entrar'
 
     within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
+      fill_in 'Email', with: 'it@it.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
       end
@@ -21,13 +20,12 @@ feature 'User sign in' do
   end
 
   scenario 'successfully' do
-    User.create!(email: 'italo@italo.com', password: '123456')
-
+    user = create(:user)
     visit root_path
     click_on 'Entrar'
 
     within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
+      fill_in 'Email', with: 'it@it.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
     end

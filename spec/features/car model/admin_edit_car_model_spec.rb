@@ -2,17 +2,12 @@ require 'rails_helper'
 
 feature 'Admin edit car model' do
   scenario 'seccessfully' do
-    categoria = CarCategory.create!(name: 'A', daily_rate: 100.95, car_insurance: 50.95, third_party_insurance: 150.45)
-    fabricante = Manufacturer.create!(name: 'Fiat')
-    CarModel.create!(name: 'Palio', motorization: '1.0', year: '2016', fuel_type: 'Gasolina', car_category: categoria, manufacturer: fabricante)
-    User.create!(email: 'italo@italo.com', password:123_456)
+    car_category = create(:car_category)
+    manufacturer = create(:manufacturer)
+    create(:car_model, name: 'Palio', motorization: '1.0', year: '2016', fuel_type: 'Gasolina', car_category: car_category, manufacturer: manufacturer)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Modelos'
     click_on 'Palio'

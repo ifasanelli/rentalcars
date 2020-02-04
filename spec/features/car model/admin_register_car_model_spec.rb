@@ -2,19 +2,11 @@ require 'rails_helper'
 
 feature 'Admin register car model' do
   scenario 'successfully' do
-    CarCategory.create!(name: 'A',
-    daily_rate: 100.95,
-    car_insurance: 50.95,
-    third_party_insurance: 150.45)
-    Manufacturer.create!(name: 'Fiat')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:car_category)
+    create(:manufacturer)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Modelos'
     click_on 'Novo modelo'
@@ -34,19 +26,11 @@ feature 'Admin register car model' do
     expect(page).to have_content('Fiat')
   end
   scenario 'and validates empty fields' do
-    CarCategory.create!(name: 'A',
-    daily_rate: 100.95,
-    car_insurance: 50.95,
-    third_party_insurance: 150.45)
-    Manufacturer.create!(name: 'Fiat')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:car_category)
+    create(:manufacturer)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Modelos'
     click_on 'Novo modelo'

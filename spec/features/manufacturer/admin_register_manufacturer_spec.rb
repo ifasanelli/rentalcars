@@ -2,14 +2,9 @@ require 'rails_helper'
 
 feature 'Admin register manufacturer' do
   scenario 'successfully' do
-    User.create!(email: 'italo@italo.com', password:123_456)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Fabricantes'
     click_on 'Novo fabricante'
@@ -21,15 +16,10 @@ feature 'Admin register manufacturer' do
   end
 
   scenario 'and validates empty fields' do
-    Manufacturer.create!(name: 'Fiat')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:manufacturer)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Fabricantes'
     click_on 'Novo fabricante'
@@ -40,15 +30,10 @@ feature 'Admin register manufacturer' do
     expect(page).to have_content('Nome não pode ficar em branco')
   end
   scenario 'and validates duplicated names' do
-    Manufacturer.create!(name: 'Fiat')
-    User.create!(email: 'italo@italo.com', password:123_456)
+    create(:manufacturer)
+    user = create(:user)
+    login_as(user, scope: :user)
     visit root_path
-    click_on 'Entrar'
-    within 'form' do
-      fill_in 'Email', with: 'italo@italo.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-    end
 
     click_on 'Fabricantes'
     click_on 'Novo fabricante'

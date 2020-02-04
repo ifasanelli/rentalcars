@@ -2,27 +2,9 @@ require 'rails_helper'
 
 feature 'Admin register a car' do
   scenario 'seccessfully' do
-    user = User.create!(email: 'italo@italo.com', password:123_456)
-    manufacturer = Manufacturer.create(name: 'Fiat')
-    car_category = CarCategory.create!(name: 'A',
-                                       daily_rate: 95.98,
-                                       car_insurance: 30.45,
-                                       third_party_insurance: 22.99)
-    car_model = CarModel.create!(name: 'Palio',
-                                 year: '2017',
-                                 manufacturer: manufacturer,
-                                 motorization: '1.6',
-                                 car_category: car_category,
-                                 fuel_type: 'Gasolina')
-    subsidiary = Subsidiary.create!(name: 'Filial Santos',
-                                    cnpj: '70047047000196',
-                                    address: 'Rua dos Santos, 13')
-    Car.create!(license_plate: 'ABC-1234',
-                      color: 'Prata',
-                      car_model: car_model,
-                      mileage: '180',
-                      subsidiary: subsidiary,
-                      status: 0)
+    user = create(:user)
+    create(:car_model)
+    create(:subsidiary)
 
     login_as(user, scope: :user)
     visit root_path
