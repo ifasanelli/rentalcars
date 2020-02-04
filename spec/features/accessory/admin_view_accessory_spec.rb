@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Admin view car model' do
+feature 'Admin view accessories' do
   scenario 'successfully' do
     user = create(:user)
     create(:accessory)
@@ -18,7 +18,7 @@ feature 'Admin view car model' do
     expect(page).to have_content('29.99')
   end
 
-  scenario 'and view car model details' do
+  scenario 'and view accessory details' do
     user = create(:user)
     create(:accessory)
     login_as(user, scope: :user)

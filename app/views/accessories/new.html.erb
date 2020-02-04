@@ -1,0 +1,37 @@
+<h2>Nova acessório</h2>
+
+<%= form_for @accessory do |f| %>
+  <div class="form-group row">
+    <%= f.label :name, 'Nome', class:"col-sm-2" %>
+    <%= f.text_field :name, class:"form-control col-sm-8" %>
+  </div>
+    <div class="form-group row">
+    <%= f.label :full_description, 'Descrição', class:"col-sm-2" %>
+    <%= f.text_field :full_description, class:"form-control col-sm-8" %>
+  </div>
+    <div class="form-group row">
+    <%= f.label :price, 'Preço', class:"col-sm-2" %>
+    <%= f.text_field :price, class:"form-control col-sm-8" %>
+  </div>
+  </div>
+    <div class="form-group row">
+    <%= f.label :picture, 'Foto', class:"col-sm-2" %>
+    <%= f.file_field :picture %>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-5">
+        <%= f.submit 'Salvar', class: "btn btn-dark" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-sm-10">
+    <% if @accessory.errors.any?%>
+        <p>Você deve corrigir os erros para continuar:</p>
+        <% @accessory.errors.full_messages.each do |message|  %>
+            <p><%= message %></p>
+        <% end %>
+    <% end %>
+</div>
+
+<%= link_to 'Voltar', car_categories_path, class:"btn btn-outline-dark etc-pdn-horz" %>

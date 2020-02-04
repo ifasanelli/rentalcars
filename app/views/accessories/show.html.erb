@@ -1,6 +1,11 @@
 <h2 class="etc-pdn-vert">Acessório</h2>
 
+
+
 <table class="table">
+  <% if @accessory.picture.attached? %>
+    <image class="col-sm-3 etc-pdn-vert-botton" src="<%=(url_for(@accessory.picture))%>">
+  <% end %>
   <thead>
     <tr>
       <th scope="col">Nome</th>
