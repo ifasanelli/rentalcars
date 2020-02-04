@@ -20,7 +20,7 @@ feature 'User sign in' do
   end
 
   scenario 'successfully' do
-    user = create(:user)
+    create(:user)
     visit root_path
     click_on 'Entrar'
 

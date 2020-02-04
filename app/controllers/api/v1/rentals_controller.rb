@@ -4,6 +4,12 @@ class Api::V1::RentalsController < Api::V1::ApiController
     return render json: @rental, status: :ok
   end
 
+  def destroy
+    @rental = Rental.find(params[:id])
+    render json: '', status: :ok if @rental.destroy
+  end
+
+
   private
 
   def rental_params

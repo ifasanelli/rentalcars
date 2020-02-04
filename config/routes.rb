@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resources :cars, only: [:show,:index, :create] do
         patch 'status', on: :member
       end
-      resources :rentals, only: [:create]
+      resources :rentals, only: [:create, :destroy]
     end
   end
 end
