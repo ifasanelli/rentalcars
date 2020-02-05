@@ -23,5 +23,6 @@
 </table>
 
 <div class="col-sm-5 etc-pdn-top">
+<%= link_to 'Deletar', accessory_path(@accessory), method: :delete, class: "btn btn-danger", data: { confirm: 'Quer apagar este acessório?' } %>
     <%= link_to 'Voltar', accessories_path, class:"btn btn-outline-dark" %>
 </div>

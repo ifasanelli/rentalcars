@@ -13,9 +13,11 @@
   <tbody>
     <% @accessories.each do |accessory|  %>
         <tr>
-            <td><%= link_to accessory.name, accessory_path(accessory.id), class:"text-dark" %></td>
-            <td><%= accessory.full_description %></td>
-            <td><%= accessory.price %></td>
+            <% if accessory.name != 'Escolha um acessório..' %>
+              <td><%= link_to accessory.name, accessory_path(accessory.id), class:"text-dark" %></td>
+              <td><%= accessory.full_description %></td>
+              <td><%= accessory.price %></td>
+            <% end %>
         </tr>
     <% end %>
   </tbody>

@@ -2,7 +2,6 @@ class Rental < ApplicationRecord
   belongs_to :client
   belongs_to :car_category
   belongs_to :user
-  has_many :accessories
 
   validate :start_date_cannot_be_in_the_past
   validate :end_date_cannot_be_before_start_date
@@ -41,6 +40,6 @@ class Rental < ApplicationRecord
   end
 
   def cars_available?
-    scheduled_rentals.count < available_cars.count
+    scheduled_rentals.count <= available_cars.count
   end
 end

@@ -11,6 +11,7 @@ feature 'User starts rental' do
         create(:car, license_plate: 'ABC-1234', color: 'Vermelho', car_model_id: car_category.id, mileage: 0, status: 0, subsidiary_id: subsidiary.id)
         create(:car, license_plate: 'AAA-4321', color: 'Roxo', car_model_id: car_category.id, mileage: 0, status: 0, subsidiary_id: subsidiary.id)
         create(:rental, start_date: 1.day.from_now, end_date: 5.days.from_now, client: client, car_category: car_category, user: user)
+        create(:accessory)
         login_as(user, scope: :user)
         visit root_path
 

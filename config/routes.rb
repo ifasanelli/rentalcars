@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     get 'results', on: :collection
     get 'start', on: :member
     post 'start', on: :member, to: 'rentals#confirm_start'
-
   end
+
   resources :cars
   resources :car_rentals, only: [:show]
-  resources :accessories, only: [:index, :show, :new, :create]
+  resources :accessories, only: [:index, :show, :new, :create, :destroy]
 
   namespace :api do
     namespace :v1 do

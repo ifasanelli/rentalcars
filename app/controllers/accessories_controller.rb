@@ -20,6 +20,12 @@ class AccessoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @accessory = Accessory.find(params[:id])
+    @accessory.destroy
+    redirect_to accessories_path
+  end
+
   private
 
   def accessory_params

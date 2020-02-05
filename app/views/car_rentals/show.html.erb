@@ -5,6 +5,7 @@
 <h3 class="etc-pdn">Modelo: <%= @car_rental.car.car_model.name %></h3>
 <h3 class="etc-pdn">Placa: <%= @car_rental.car.license_plate %></h3>
 <h3 class="etc-pdn">Cor: <%= @car_rental.car.color %></h3>
+<h3 class="etc-pdn">Acessório: <%= @car_rental.accessory.name %></h3>
 <h3 class="etc-pdn">Quilometragem inicial: <%= @car_rental.start_mileage %> mil Km.</h3>
 
 <%= link_to 'Voltar', rentals_path, class:"btn btn-outline-dark etc-pdn-show" %>

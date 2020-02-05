@@ -38,6 +38,7 @@ class RentalsController < ApplicationController
 
 	def start
 		@rental = Rental.find(params[:id])
+		@accessories = Accessory.all
 		@cars = Car.where(car_model: @rental.car_category.car_models)
 							 .where(status: :available)
 	end
@@ -46,11 +47,14 @@ class RentalsController < ApplicationController
 		@rental = Rental.find(params[:id])
 		@rental.confirmed!
 		@car = Car.find(params[:car_id])
+		@accessory = Accessory.find(params[:accessory_id])
 		@car.unavailable!
+		total_price = @rental.car_category.daily_price + @accessory.price
 		@car_rental = CarRental.create(rental: @rental,
 																   car: @car,
-																	 price: @rental.car_category.daily_price,
-																	 start_mileage: @car.mileage)
+																	 price: total_price,
+																	 start_mileage: @car.mileage,
+																	 accessory: @accessory)
 		redirect_to @car_rental
 	end
 

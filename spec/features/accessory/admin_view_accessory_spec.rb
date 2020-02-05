@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin view accessories' do
   scenario 'successfully' do
     user = create(:user)
-    create(:accessory)
+    create(:accessory, name: 'Cadeira infantil', full_description: 'Cadeira ajustável para crianças de 3 a 7 anos', price:39.99)
     create(:accessory, name: 'Cadeira para bebês', full_description: 'Cadeira ajustável para bebês de 0 a 2 anos', price: 29.99)
     login_as(user, scope: :user)
     visit root_path
@@ -20,7 +20,7 @@ feature 'Admin view accessories' do
 
   scenario 'and view accessory details' do
     user = create(:user)
-    create(:accessory)
+    create(:accessory, name: 'Cadeira infantil', full_description: 'Cadeira ajustável para crianças de 3 a 7 anos', price:39.99)
     login_as(user, scope: :user)
     visit root_path
 
