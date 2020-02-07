@@ -1,11 +1,37 @@
-<h2 class="text-success">Locação Efetivada!</h2>
-<h3 class="etc-pdn">Código: <%= @car_rental.rental.code %></h3>
-<h3 class="etc-pdn">Diária: R$<%= @car_rental.price %></h3>
-<h3 class="etc-pdn">Fabricante: <%= @car_rental.car.car_model.manufacturer.name %></h3>
-<h3 class="etc-pdn">Modelo: <%= @car_rental.car.car_model.name %></h3>
-<h3 class="etc-pdn">Placa: <%= @car_rental.car.license_plate %></h3>
-<h3 class="etc-pdn">Cor: <%= @car_rental.car.color %></h3>
-<h3 class="etc-pdn">Acessório: <%= @car_rental.accessory.name %></h3>
-<h3 class="etc-pdn">Quilometragem inicial: <%= @car_rental.start_mileage %> mil Km.</h3>
+<h2 class="etc-pdn-vert">Locação Efetivada</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Diária</th>
+      <th scope="col">Fabricante</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Placa</th>
+      <th scope="col">Cor</th>
+      <th scope="col">Acessório</th>
+      <th scope="col">Quilometragem inicial</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><%= @car_rental.rental.code %></td>
+        <td><%= @car_rental.price %></td>
+        <td><%= @car_rental.car.car_model.manufacturer.name %></td>
+        <td><%= @car_rental.car.car_model.name %></td>
+        <td><%= @car_rental.car.license_plate %></td>
+        <td><%= @car_rental.car.color %></td>
+        <td>
+          <% if @car_rental.accessory.name != 'Escolha um acessório..' %>
+            <%= @car_rental.accessory.name %>
+          <% end %>
+        </td>
+        <td><%= @car_rental.start_mileage %> mil Km.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 
 <%= link_to 'Voltar', rentals_path, class:"btn btn-outline-dark etc-pdn-show" %>

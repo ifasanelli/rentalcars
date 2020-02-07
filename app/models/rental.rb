@@ -27,9 +27,9 @@ class Rental < ApplicationRecord
 
   def scheduled_rentals
     Rental.where(car_category: car_category)
-    .where(start_date: start_date..end_date)
-    .or(Rental.where(car_category: car_category)
-              .where(end_date: start_date..end_date)
+          .where(start_date: start_date..end_date)
+          .or(Rental.where(car_category: car_category)
+                    .where(end_date: start_date..end_date)
     )
   end
 

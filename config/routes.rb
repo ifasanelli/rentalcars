@@ -13,8 +13,11 @@ Rails.application.routes.draw do
     post 'start', on: :member, to: 'rentals#confirm_start'
   end
 
+  get '/reports', to: 'reports#index'
+  post '/reports/results', to: 'reports#results', format: 'csv'
+
+  resources :car_rentals, only: [:show, :index]
   resources :cars
-  resources :car_rentals, only: [:show]
   resources :accessories, only: [:index, :show, :new, :create, :destroy]
 
   namespace :api do
