@@ -5,7 +5,7 @@ class CarRental < ApplicationRecord
 
 
   def self.to_csv
-    attributes = %w{ rental_code price manufacturer car_model license_plate car_color start_mileage }
+    attributes = %w{ rental_code price car_category manufacturer car_model license_plate car_color subsidiary }
     csv = []
     CSV.generate(headers: true) do |row|
       row << attributes
@@ -36,4 +36,11 @@ class CarRental < ApplicationRecord
     "#{car.color}"
   end
 
+  def subsidiary
+    "#{car.subsidiary.name}"
+  end
+
+  def car_category
+    "#{car.car_model.car_category.name}"
+  end
 end

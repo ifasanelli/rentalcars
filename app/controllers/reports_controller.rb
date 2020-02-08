@@ -1,17 +1,9 @@
 class ReportsController < ApplicationController
 
   def index
-    @car_rentals = CarRental.all
     @subsidiaries = Subsidiary.all
-
-    respond_to do |format|
-      format.html
-      format.csv {
-        send_data(@car_rentals.to_csv,
-          type: "text/csv",
-          filename: "relatorio-geral-#{Date.current}.csv")
-      }
-    end
+    @car_categories = CarCategory.all
+    @car_models = CarModel.all
   end
 
   def results
@@ -19,9 +11,26 @@ class ReportsController < ApplicationController
     @end_date = params[:end_date]
     @type = params[:type]
 
+    @subsidiary = params[:subsidiary]
+    @category = params[:category]
+    @model = params[:model]
+
+    # if @type == 'subsidiary'
+    #   @cars = Car.where(subsidiary_id: @subsidiary)
+    # elsif @type == 'model'
+    #   @cars = Car.where(car_model_id: @model)
+    # else
+    #   @cars = Car.joins(:car_model)
+    #            .where(car_models: { car_category_id: @category })
+    # end
+
+    @cars = Car.where(subsidiary_id: @subsidiary)
+
     @rentals = Rental.where(start_date: @start_date..@end_date)
                      .or(Rental.where(end_date: @start_date..@end_date))
+
     @car_rentals = CarRental.where(rental: @rentals)
+                            .where(car: @cars)
 
     respond_to do |format|
       format.html
@@ -31,7 +40,6 @@ class ReportsController < ApplicationController
                   filename: "relatorio-#{Date.current}.csv")
       }
     end
-
   end
 
 end

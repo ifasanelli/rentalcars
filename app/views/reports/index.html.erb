@@ -1,9 +1,16 @@
 <h2 class="etc-pdn-vert">Relatório de locação</h2>
 
-<a href="/reports.csv"><button class="btn btn-success etc-pdn-vert-botton">Exportar tudo</button></a>
-
-
 <%= form_tag "/reports/results" do %>
+
+  <div class="field">
+    <%= label_tag(:type, "Categoria") %>
+    <%= radio_button_tag(:type, :category, checked: 'checked') %>
+    <%= label_tag(:type, "Filial") %>
+    <%= radio_button_tag(:type, :subsidiary) %>
+    <%= label_tag(:type, "Modelo") %>
+    <%= radio_button_tag(:type, :model) %>
+  </div>
+
   <div class="form-group row">
     <%= label_tag :start_date, 'Data inicial', class:"col-sm-1" %>
     <%= date_field_tag :start_date, class:"form-control col-sm-3"  %>
@@ -14,13 +21,19 @@
     <%= date_field_tag :end_date, class:"form-control col-sm-3"  %>
   </div>
 
-  <div class="field">
-    <%= radio_button_tag(:type, :category, checked: 'checked') %>
-    <%= label_tag(:category, "Categoria", class:"etc-pdn-hor") %>
-    <%= radio_button_tag(:type, :subsidiary) %>
-    <%= label_tag(:subsidiary, "Filial", class:"etc-pdn-hor") %>
-    <%= radio_button_tag(:type, :model) %>
-    <%= label_tag(:model, "Modelo", class:"etc-pdn-hor") %>
+  <div class="form-group row">
+    <%= label_tag :subsidiary, 'Filiais', class:"col-sm-1" %>
+    <%= select_tag :subsidiary, options_from_collection_for_select(@subsidiaries, "id", "name"), include_blank: true %>
+  </div>
+
+  <div class="form-group row">
+    <%= label_tag :category, 'Categorias', class:"col-sm-1" %>
+    <%= select_tag :category, options_from_collection_for_select(@car_categories, "id", "name"), include_blank: true %>
+  </div>
+
+  <div class="form-group row">
+    <%= label_tag :model, 'Modelos', class:"col-sm-1" %>
+    <%= select_tag :model, options_from_collection_for_select(@car_models, "id", "name"), include_blank: true %>
   </div>
 
   <div class="form-group row">
