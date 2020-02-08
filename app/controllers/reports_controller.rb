@@ -15,16 +15,14 @@ class ReportsController < ApplicationController
     @category = params[:category]
     @model = params[:model]
 
-    # if @type == 'subsidiary'
-    #   @cars = Car.where(subsidiary_id: @subsidiary)
-    # elsif @type == 'model'
-    #   @cars = Car.where(car_model_id: @model)
-    # else
-    #   @cars = Car.joins(:car_model)
-    #            .where(car_models: { car_category_id: @category })
-    # end
-
-    @cars = Car.where(subsidiary_id: @subsidiary)
+    if @type == 'subsidiary'
+      @cars = Car.where(subsidiary_id: @subsidiary)
+    elsif @type == 'model'
+      @cars = Car.where(car_model_id: @model)
+    else
+      @cars = Car.joins(:car_model)
+               .where(car_models: { car_category_id: @category })
+    end
 
     @rentals = Rental.where(start_date: @start_date..@end_date)
                      .or(Rental.where(end_date: @start_date..@end_date))

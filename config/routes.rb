@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   end
 
   get '/reports', to: 'reports#index'
-  post '/reports/results', to: 'reports#results'
-  get '/reports/results', to: 'reports#results', format: 'csv'
+  post '/reports/results', to: 'reports#results', format: 'csv'
 
   resources :car_rentals, only: [:show, :index]
   resources :cars
