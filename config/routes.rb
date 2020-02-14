@@ -13,8 +13,12 @@ Rails.application.routes.draw do
     post 'start', on: :member, to: 'rentals#confirm_start'
   end
 
-  get '/reports', to: 'reports#index'
-  post '/reports/results', to: 'reports#results', format: 'csv'
+  get '/reports/sub_reports', to: 'reports#sub_reports'
+  get '/reports/cat_reports', to: 'reports#cat_reports'
+  get '/reports/mod_reports', to: 'reports#mod_reports'
+  post '/reports/sub_results', to: 'reports#sub_results', format: 'csv'
+  post '/reports/cat_results', to: 'reports#cat_results', format: 'csv'
+  post '/reports/mod_results', to: 'reports#mod_results', format: 'csv'
 
   resources :car_rentals, only: [:show, :index]
   resources :cars

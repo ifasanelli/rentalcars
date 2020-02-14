@@ -1,7 +1,7 @@
 class Api::V1::RentalsController < Api::V1::ApiController
   def create
     @rental = Rental.create!(rental_params)
-    return render json: @rental, status: :ok
+    render json: @rental, status: :ok
   end
 
   def destroy

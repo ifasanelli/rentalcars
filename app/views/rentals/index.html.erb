@@ -1,10 +1,18 @@
 <h2 class="etc-pdn-vert">Locações</h2>
 
-<div class="col-sm-5 etc-pdn-top">
+<div class="etc-pdn-top">
   <%= link_to 'Agendar locação', new_rental_path, class:"btn btn-primary etc-pdn-horz etc-pdn-vert" %>
   <%= link_to 'Locações Efetivadas', car_rentals_path, class:"btn btn-success etc-pdn-horz etc-pdn-vert" %>
-  <%= link_to 'Relatórios', reports_path, class:"btn btn-warning etc-pdn-horz etc-pdn-vert" %>
+  <button class="btn btn-warning etc-pdn-horz etc-pdn-vert dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Relatórios
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to 'Filiais',  reports_sub_reports_path, class:"dropdown-item" %>
+    <%= link_to 'Categorias', reports_cat_reports_path, class:"dropdown-item" %>
+    <%= link_to 'Modelos', reports_mod_reports_path, class:"dropdown-item" %>
+  </div>
 </div>
+
 
 <table class="table">
   <thead class="thead-dark">

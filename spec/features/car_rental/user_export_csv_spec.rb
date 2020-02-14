@@ -7,9 +7,8 @@ feature 'User exports csv' do
     visit root_path
 
     click_on 'Locações'
-    click_on 'Locações Efetivadas'
     click_on 'Relatórios'
 
-    expect(page).to have_content('Italo')
+    expect(page).to have_content(user.email)
   end
 end

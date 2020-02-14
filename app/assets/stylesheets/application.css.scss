@@ -15,54 +15,69 @@
  */
 
  @import "bootstrap";
+   body.home{
+      background-image: image-url('rental.jpeg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+   }
 
- h1, h2 {
-    margin-left: 50px;
-    margin-top: 0px;
- }
+   .titulo{
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.8);
+      height: 50px;
+      width: 100%;
+      margin: 0;
+      padding-left: 50px;
+      vertical-align: middle;
+   }
 
- form {
-    margin-left: 50px;
- }
+   h1, h2 {
+      margin-left: 50px;
+      margin-top: 0px;
+   }
 
- .etc-pdn {
-   margin-left: 50px;
-   margin-top: 10px;
- }
+   form {
+      margin-left: 50px;
+   }
 
- .etc-pdn-vert{
-    margin-bottom: 50px;
- }
+   .etc-pdn {
+      margin-left: 50px;
+      margin-top: 10px;
+   }
 
- .etc-pdn-vert2{
-   margin-top: 20px;
-}
+   .etc-pdn-vert{
+      margin-bottom: 50px;
+   }
 
- .etc-pdn-vert-botton{
-   margin-bottom: 50px;
-   margin-left: 50px;
-}
+   .etc-pdn-vert2{
+      margin-top: 20px;
+   }
 
- .etc-pdn-horz{
-   margin-left: 30px;
-}
+   .etc-pdn-vert-botton{
+      margin-bottom: 50px;
+      margin-left: 50px;
+   }
 
-.etc-pdn-hor{
-   margin-right: 30px;
-}
+   .etc-pdn-horz{
+      margin-left: 30px;
+   }
 
-.etc-pdn-show{
-   margin-top: 100px;
-   margin-left: 30px;
-}
+   .etc-pdn-hor{
+      margin-right: 30px;
+   }
 
-.etc-pdn-top{
-   margin-top: 50px;
-   margin-left: 35px;
-}
+   .etc-pdn-show{
+      margin-top: 100px;
+      margin-left: 30px;
+   }
 
-.nav-item:hover{
-   background-color: lightgrey;
-}
+   .etc-pdn-top{
+      margin-top: 50px;
+      margin-left: 35px;
+   }
+
+   .nav-item:hover{
+      background-color: lightgrey;
+   }
 
 
