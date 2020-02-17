@@ -30,6 +30,12 @@ Rails.application.routes.draw do
         patch 'status', on: :member
       end
       resources :rentals, only: [:create, :destroy]
+      resources :manufacturers, only: [:index, :show]
+      resources :subsidiaries, only: [:index, :show]
+      resources :car_categories, only: [:index, :show]
+      resources :car_models, only: [:index, :show]
+      resources :clients, only: [:index, :show, :create]
     end
   end
+
 end

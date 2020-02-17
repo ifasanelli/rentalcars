@@ -1,5 +1,4 @@
 class ClientsController < ApplicationController
-	before_action :authenticate_user!
 	before_action :load_client, only: %i[show edit update destroy]
 
 	def index

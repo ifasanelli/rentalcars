@@ -1,5 +1,4 @@
 class RentalsController < ApplicationController
-	before_action :authenticate_user!
 	before_action :load_dependencies, only: %i[new create]
 
 	def index

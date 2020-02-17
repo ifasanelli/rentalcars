@@ -1,5 +1,4 @@
 class CarModelsController < ApplicationController
-	before_action :authenticate_user!
 	before_action :load_car_model, only: %i[show edit update destroy]
 	before_action :load_car_category, only: %i[new edit create update]
 	before_action :load_manufacturer, only: %i[new edit create update]

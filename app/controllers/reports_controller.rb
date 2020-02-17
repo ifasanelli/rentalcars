@@ -25,7 +25,7 @@ class ReportsController < ApplicationController
       format.csv {
         send_data(@car_rentals.to_csv,
                   type: "text/csv",
-                  filename: "relatorio-filiais-#{Date.current}.csv")
+                  filename: "relatorio-filiais-#{@start_date}-to-#{@end_date}.csv")
       }
     end
   end
@@ -45,7 +45,7 @@ class ReportsController < ApplicationController
       format.csv {
         send_data(@car_rentals.to_csv,
                   type: "text/csv",
-                  filename: "relatorio-categorias-#{Date.current}.csv")
+                  filename: "relatorio-categorias-#{@start_date}-to-#{@end_date}.csv")
       }
     end
   end
@@ -64,7 +64,7 @@ class ReportsController < ApplicationController
       format.csv {
         send_data(@car_rentals.to_csv,
                   type: "text/csv",
-                  filename: "relatorio-modelos-#{Date.current}.csv")
+                  filename: "relatorio-modelos-#{@start_date}-to-#{@end_date}.csv")
       }
     end
   end

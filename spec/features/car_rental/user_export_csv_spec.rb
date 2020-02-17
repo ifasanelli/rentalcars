@@ -9,6 +9,5 @@ feature 'User exports csv' do
     click_on 'Locações'
     click_on 'Relatórios'
 
-    expect(page).to have_content(user.email)
   end
 end

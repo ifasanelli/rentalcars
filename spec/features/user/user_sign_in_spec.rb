@@ -4,7 +4,6 @@ feature 'User sign in' do
   scenario 'from home page' do
     user = create(:user)
     visit root_path
-    click_on 'Entrar'
 
     within 'form' do
       fill_in 'Email', with: 'it@it.com'
@@ -16,24 +15,23 @@ feature 'User sign in' do
     expect(page).to have_content('Signed in successfully')
     expect(page).to have_content('Sair')
     expect(page).to_not have_content('Entrar')
-    expect(page).to have_content("Olá, #{user.email}")
+    expect(page).to have_content("#{user.email}")
   end
 
   scenario 'successfully' do
-    create(:user)
+    user = create(:user)
     visit root_path
-    click_on 'Entrar'
 
     within 'form' do
       fill_in 'Email', with: 'it@it.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
-    end
+      end
     click_on 'Sair'
 
-    expect(page).to have_content('Signed out successfully')
+    expect(page).to have_content('Log in')
     expect(page).not_to have_link('Sair')
-    expect(page).to have_link('Entrar')
-    expect(current_path).to eq(root_path)
+    expect(page).to have_content('Email')
+    expect(page).to have_content('Senha')
   end
 end

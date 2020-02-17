@@ -9,10 +9,10 @@ class Api::V1::CarsController < Api::V1::ApiController
 		render json: @car
 	end
 
-	def create
-		@car = Car.create(car_params)
-		return render json: @car, status: :created if @car.save
-	end
+	# def create
+	# 	@car = Car.create(car_params)
+	# 	return render json: @car, status: :created if @car.save
+	# end
 
 	def status
 		@car = Car.find(params[:id])

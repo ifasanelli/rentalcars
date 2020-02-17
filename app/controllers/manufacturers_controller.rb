@@ -1,5 +1,4 @@
 class ManufacturersController < ApplicationController
-	before_action :authenticate_user!
 	before_action :load_manufacturer, only: %i[show edit update destroy]
 
 	def index
